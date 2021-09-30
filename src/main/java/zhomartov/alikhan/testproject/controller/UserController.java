@@ -39,7 +39,7 @@ public class UserController extends ExceptionHandling {
         return new ResponseEntity<>(userService.selectAllUsers(pageable), HttpStatus.OK);
     }
 
-    @GetMapping("get-user-by-one/{user_id}")
+    @GetMapping("/get-user-by-one/{user_id}")
     public ResponseEntity<UserResponseDto> getUserById(@PathVariable(name = "user_id") Long userId) {
         return new ResponseEntity<>(userService.selectUserById(userId), HttpStatus.OK);
     }
@@ -52,13 +52,13 @@ public class UserController extends ExceptionHandling {
         return new ResponseEntity<>(HttpStatus.OK);
     }
 
-    @PostMapping("update-user/{user_id}")
+    @PostMapping("/update-user/{user_id}")
     public ResponseEntity<HttpStatus> updateUserById(@PathVariable(name = "user_id") Long userId, @RequestBody UserUpdateRequestDto userUpdateRequestDto) {
         userService.updateUserService(userUpdateRequestDto, userId);
         return new ResponseEntity<>(HttpStatus.OK);
     }
 
-    @DeleteMapping("delete-user/{user_id}")
+    @DeleteMapping("/delete-user/{user_id}")
     public ResponseEntity<HttpStatus> deleteUserById(@PathVariable(name = "user_id") Long userId) {
         userService.deleteUserService(userId);
         return new ResponseEntity<>(HttpStatus.OK);
